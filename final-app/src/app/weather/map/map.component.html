@@ -1,0 +1,20 @@
+<div class="map-container">
+  <h1>Here You can find out weather and plan what to do in the evening</h1>
+  <div *ngIf="weather" class="weather-info">
+    <p><b>Temperature:</b> {{transformDecimal(weather['temp'])}}&#8451;</p>
+    <p><b>Fells Like:</b> {{transformDecimal(weather['feels_like'])}}&#8451;</p>
+    <p><b>Humidity:</b> {{weather['humidity']}}%</p>
+    <p><b>Pressure:</b> {{weather['pressure']}}atm</p>
+    <p *ngIf="weather['temp'] < 10"><b>Ou better to stay at home and watch some movie!</b></p>
+  </div>
+  <div id="map"
+       leaflet
+       (leafletMapReady)="initializeMap($event)"
+       [leafletOptions]="options"
+       (leafletClick)="onMapClick($event)">
+  </div>
+  <div class="location-search">
+    <app-geocoding (onSearch)="refreshSearchList($event)" (locationSelected)="getAddress($event)"></app-geocoding>
+  </div>
+</div>
+

@@ -1,0 +1,8 @@
+<div class="buttons-container">
+  <button mat-raised-button class="btn add-btn" type="button" (click)="saveToFavorite(movieId)"
+          [disabled]="favoriteMovies.includes(movieId.toString())">Add to Favorite
+  </button>
+  <button mat-raised-button class="btn del-btn mat-warn" type="button" (click)="deleteFromFavorite(movieId)"
+          [disabled]="!favoriteMovies.includes(movieId.toString())">Delete
+  </button>
+</div>

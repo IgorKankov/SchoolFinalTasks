@@ -1,0 +1,18 @@
+<div *ngIf="movies" class="films-container">
+  <div *ngFor="let film of movies" class="film-block">
+    <a (click)="goToMovie(film.id)" class="movie-link">
+      <div *ngIf="!film['poster_path']" class="empty-poster">
+        <p>Poster Not Found</p>
+      </div>
+      <img *ngIf="film['poster_path']" [src]="'https://image.tmdb.org/t/p/w500' + film['poster_path']"
+           [alt]="film.title" class="film-poster">
+    </a>
+    <div class="film-info-block">
+      <p>{{film.title}}</p>
+<!--      <p>{{film['genre_ids']}}</p>-->
+      <p *ngIf="favoriteMoviesIds.includes(film.id.toString())"><b>Favorite</b></p>
+    </div>
+    <app-favorit-control-buttons [movieId]="film.id" (getMoviesIds)="ngOnChange($event)"></app-favorit-control-buttons>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,26 @@
+<div class="movie-container">
+  <div *ngIf="movieData" class="movie-info">
+    <div *ngIf="!movieData['backdrop_path']" class="empty-poster">
+      <p>Poster Not Found</p>
+    </div>
+    <img *ngIf="movieData['poster_path']" [src]="'https://image.tmdb.org/t/p/w500' + movieData['backdrop_path']"
+         [alt]="movieData.title" class="poster">
+    <div class="text-info">
+      <p class="tagline">{{movieData['tagline']}}</p>
+      <p class="info"><b>Title: </b><span>{{movieData.title}}</span></p>
+      <p class="info"><b>Budget: </b><span>{{movieData['budget']}}</span></p>
+      <p class="info"><b>Released: </b><span>{{movieData['release_date']}}</span></p>
+      <p class="info"><b>Rating: </b><span>{{movieData['vote_average']}}</span></p>
+      <p class="info"><b>Runtime: </b><span>{{movieData['runtime']}}</span></p>
+      <p class="info">{{movieData['overview']}}</p>
+      <p *ngIf="favoriteMoviesIds.includes(movieData.id.toString())"><b>Favorite</b></p>
+    </div>
+    <div class="buttons-block">
+      <app-favorit-control-buttons [movieId]="movieData.id" (getMoviesIds)="ngOnChange($event)"></app-favorit-control-buttons>
+    </div>
+  </div>
+  <div class="related-movies">
+    <h2>SIMILAR MOVIES</h2>
+    <app-film-card [movies]="recommendations"></app-film-card>
+  </div>
+</div>

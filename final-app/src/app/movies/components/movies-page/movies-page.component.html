@@ -1,0 +1,7 @@
+<div class="movies-page-container">
+  <h1>Find Your Favorite Movie!</h1>
+  <mat-form-field>
+    <input type="text" placeholder="Search..." matInput [formControl]="search">
+  </mat-form-field>
+  <app-film-card [movies]="movies"></app-film-card>
+</div>

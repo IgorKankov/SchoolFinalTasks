@@ -1,0 +1,41 @@
+.movie-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .movie-info {
+    position: relative;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 80px 0;
+
+    .poster {
+      width: 45%;
+      object-fit: contain;
+    }
+
+    .text-info {
+      width: 45%;
+    }
+
+    .buttons-block{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .related-movies {
+    margin-top: 80px;
+
+    h2 {
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}
